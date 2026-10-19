@@ -1,6 +1,6 @@
 # Roter Faden – Gliederungswerkstatt mit Ollama
 
-Eine deutschsprachige, statische Browseranwendung, um Materialien zu sammeln und daraus eine bearbeitbare Gliederung zu entwickeln. Für Fach-, Projekt- und Maturaarbeiten. Ohne Konto, Backend oder API-Schlüssel.
+Eine deutschsprachige, statische Browseranwendung, um Materialien zu sammeln und daraus eine bearbeitbare Gliederung zu entwickeln. Für Fach-, Projekt- und Maturaarbeiten. Ohne Konto oder API-Schlüssel. Die KI-Funktion nutzt einen lokalen Node.js-Dienst und Ollama auf demselben Rechner.
 
 ## Eigenständiger Stand: Ollama-Edition
 
@@ -20,7 +20,7 @@ Dieser Stand wird separat unter **gliederungswerkstatt-ollama** veröffentlicht.
 npm start
 ```
 
-Danach http://127.0.0.1:4189 öffnen. Node.js 22 LTS oder neuer ist für den lokalen Server erforderlich. Nicht per Doppelklick öffnen: PDF-Worker und JavaScript-Module brauchen HTTP. Alternativ jeden anderen statischen Webserver verwenden.
+Danach http://127.0.0.1:4189 öffnen. Node.js 22 LTS oder neuer ist für den lokalen Server erforderlich. Nicht per Doppelklick öffnen: PDF-Worker und JavaScript-Module brauchen HTTP. Andere statische Webserver ermöglichen die Grundfunktionen, aber nicht die lokale KI-Verbindung.
 
 ## Arbeitsablauf
 
