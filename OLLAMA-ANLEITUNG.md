@@ -89,37 +89,56 @@ ollama pull qwen3:4b
 ollama pull qwen3:14b
 ```
 
-## 5. Lokale Gliederungswerkstatt starten
+## 5. Lokale Gliederungswerkstatt auf Windows oder Mac starten
 
-1. Installiere [Node.js](https://nodejs.org/) 22 LTS oder neuer, falls noch nicht vorhanden.
-2. Lade unter [GitHub → Code → Download ZIP](https://github.com/PatrickFischerKSA/gliederungswerkstatt-ollama) das Projekt herunter und entpacke es.
-3. Öffne ein Terminal **im entpackten Projektordner**, in dem `package.json` liegt. Nicht im ZIP-Archiv arbeiten.
-   - **Windows:** ZIP im Explorer über „Alle extrahieren“ entpacken. Den entpackten Ordner öffnen und prüfen, ob `package.json` sichtbar ist; gegebenenfalls den enthaltenen Unterordner öffnen. In die Adressleiste des Explorers `powershell` eingeben und Enter drücken. Alternativ „Im Terminal öffnen“ verwenden.
-   - **macOS:** Im Terminal `cd ` eingeben, den entpackten Ordner hineinziehen und Enter drücken.
-   - **Linux:** Im Dateimanager im Projektordner „Im Terminal öffnen“ wählen.
-4. Starte unter **Windows**:
+### Gemeinsame Vorbereitung
+
+1. [Node.js](https://nodejs.org/) 22 LTS oder neuer installieren. Bei Windows danach gegebenenfalls ab- und wieder anmelden, damit Startdateien die neue Installation finden.
+2. Unter [GitHub → Code → Download ZIP](https://github.com/PatrickFischerKSA/gliederungswerkstatt-ollama) die aktuelle Version herunterladen und vollständig entpacken. Nicht im ZIP-Archiv arbeiten. Den alten Projektordner zunächst behalten, bis vorhandene Projekte als JSON gesichert sind.
+3. Ollama starten. Das Modell `qwen3:8b` muss bereits einmal heruntergeladen worden sein. Für Cloud-Deaktivierung siehe Abschnitt 3.
+
+### Windows
+
+1. ZIP im Explorer über **„Alle extrahieren“** entpacken.
+2. Den entpackten Ordner öffnen, in dem `package.json` liegt; gegebenenfalls den enthaltenen Unterordner öffnen.
+3. **`Start-Windows.cmd` doppelklicken.** Das Fenster während der Nutzung offen lassen. Die Datei startet nur den lokalen Node.js-Dienst und installiert nichts.
+4. Im Browser [http://127.0.0.1:4189](http://127.0.0.1:4189) öffnen.
+
+Alternativ: In der Explorer-Adressleiste dieses Ordners `powershell` eingeben, Enter drücken und starten:
 
 ```powershell
 npm.cmd run local-ai
 ```
 
-Unter **macOS/Linux**:
+`npm.cmd` vermeidet mögliche PowerShell-Sperren für `npm.ps1`. Dafür keine Ausführungsrichtlinie ändern. Falls `node` oder `npm.cmd` unbekannt ist, Node.js installieren und danach ein neues Terminal öffnen. Prüfen mit `node --version` und `npm.cmd --version`.
+
+### macOS
+
+1. Die heruntergeladene ZIP im Finder entpacken.
+2. Im entpackten Ordner **`Start-Mac.command` öffnen**. Das Terminalfenster während der Nutzung offen lassen. Die Datei startet nur den lokalen Node.js-Dienst und installiert nichts.
+3. Im Browser [http://127.0.0.1:4189](http://127.0.0.1:4189) öffnen.
+
+Alternativer Start im Terminal: `cd ` eingeben, den entpackten Ordner hineinziehen, Enter drücken und ausführen:
 
 ```sh
 npm run local-ai
 ```
 
-`npm.cmd` verwendet unter Windows direkt die mit Node.js installierte Befehlsdatei und vermeidet mögliche PowerShell-Sperren für `npm.ps1`. Dafür musst du keine Ausführungsrichtlinie ändern. Falls `npm.cmd` unbekannt ist, Node.js installieren und danach ein neues Terminal öffnen. Prüfen mit `node --version` und `npm.cmd --version`.
+Bei einer macOS-Sicherheitsmeldung nicht pauschal Sicherheitseinstellungen abschalten. Herkunft der Dateien prüfen und gegebenenfalls den oben beschriebenen manuellen Terminalstart verwenden. Der manuelle Start benötigt die `.command`-Datei nicht.
 
-Es ist kein `npm install` nötig; der lokale Dienst verwendet nur Node.js-Bordmittel.
+### Linux
 
-5. Öffne im Browser:
+Im entpackten Projektordner ein Terminal öffnen und `npm run local-ai` ausführen. Ollama läuft separat.
 
-[http://127.0.0.1:4189/#argumentation](http://127.0.0.1:4189/#argumentation)
+### Für alle Systeme
 
-Das Terminal muss geöffnet bleiben. Beenden mit Ctrl+C. Ollama läuft separat. Beim nächsten Einsatz Ollama und die Werkstatt erneut starten: Windows mit `npm.cmd run local-ai`, macOS/Linux mit `npm run local-ai`. Das Modell nicht erneut herunterladen.
+Es ist kein `npm install` nötig. Der lokale Dienst verwendet nur Node.js-Bordmittel. Die Startdateien prüfen, ob Node.js mindestens Version 22 hat, und verwenden automatisch ihren eigenen Projektordner; auch Ordnernamen mit Leerzeichen werden berücksichtigt.
 
-Die normale GitHub-Pages-Webversion funktioniert weiterhin mit der Regelprüfung. Für die KI-Funktion ist die lokale Adresse erforderlich. Dadurch entfallen Browserprobleme durch HTTPS-zu-Localhost-Verbindungen und zusätzliche CORS-Freigaben.
+Nach dem Start **http://127.0.0.1:4189/#argumentation** öffnen. Beenden mit **Ctrl+C** im Startfenster. Beim nächsten Einsatz nur Ollama und die Startdatei erneut starten; das Modell nicht erneut herunterladen. `npm start` startet denselben lokalen Dienst.
+
+Die normale GitHub-Pages-Webversion funktioniert weiterhin mit der Regelprüfung. Für die KI-Funktion ist die lokale Adresse erforderlich. Installation pro Rechner, nicht pro Browser. Die Projekte selbst liegen im jeweiligen Browserspeicher; zum Wechsel als JSON sichern und im anderen Browser öffnen.
+
+Technisch geprüft wurde der Dienst auf macOS sowie mit automatisierten API-Tests. Ein vollständiger Windows-Test mit installiertem Ollama wurde in dieser Umgebung nicht durchgeführt.
 
 ## 6. Bestehendes Projekt übertragen und prüfen
 
@@ -135,6 +154,7 @@ Grenzen pro Anfrage: 20 Wörter bis 10 000 Zeichen im Entwurf, 1 000 Zeichen in 
 
 ## 7. Häufige Probleme
 
+- **Startdatei meldet fehlendes Node.js:** Node.js 22 oder neuer installieren und die Startdatei neu öffnen.
 - **Windows: „npm.ps1 kann nicht geladen werden“ / Skriptausführung deaktiviert:** `npm.cmd run local-ai` statt `npm run local-ai` verwenden. Die PowerShell-Ausführungsrichtlinie muss nicht geändert werden.
 - **Windows: `npm.cmd` oder `node` nicht gefunden:** Node.js installieren und PowerShell vollständig schließen und neu öffnen. Mit `node --version` und `npm.cmd --version` prüfen.
 - **Windows: `package.json` nicht gefunden / ENOENT:** Du bist im falschen Ordner. Die heruntergeladene ZIP vollständig entpacken und ein Terminal in dem Ordner öffnen, in dem `package.json` liegt.

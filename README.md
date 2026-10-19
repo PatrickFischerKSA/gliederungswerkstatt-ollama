@@ -14,7 +14,18 @@ Dieser Stand wird separat unter **gliederungswerkstatt-ollama** veröffentlicht.
 
 [Installationsanleitung mit Windows-Schritten](OLLAMA-ANLEITUNG.md)
 
-## Starten
+## Starten auf Windows und Mac
+
+Nach einmaliger Installation von Node.js 22+ sowie Ollama und dem Modell:
+
+| System | Startdatei im entpackten Projektordner |
+| --- | --- |
+| Windows | `Start-Windows.cmd` |
+| macOS | `Start-Mac.command` |
+
+Danach **http://127.0.0.1:4189** im Browser öffnen. Das Startfenster offen lassen; Ollama läuft separat. Es ist kein `npm install` nötig. Die vollständige [Anleitung](OLLAMA-ANLEITUNG.md) erklärt Installation, alternative Terminalbefehle und Projektübertragung.
+
+### Alternativ im Terminal starten
 
 Windows (PowerShell oder Eingabeaufforderung):
 
@@ -74,7 +85,7 @@ npm run check
 npm test
 ```
 
-Node.js 20+ erforderlich. Tests prüfen Modellkombinationen, Materialvorschläge, Projektvalidierung und Export. Keine Installation von npm-Paketen nötig. Die Anwendung benötigt einen aktuellen Browser mit ES-Modulen, Web Workern und `crypto.randomUUID` (localhost oder HTTPS).
+Node.js 22+ erforderlich. Tests prüfen Modellkombinationen, Materialvorschläge, Projektvalidierung und Export. Keine Installation von npm-Paketen nötig. Die Anwendung benötigt einen aktuellen Browser mit ES-Modulen, Web Workern und `crypto.randomUUID` (localhost oder HTTPS).
 
 ## Lizenz
 
