@@ -12,9 +12,17 @@ Dieser Stand wird separat unter **gliederungswerkstatt-ollama** veröffentlicht.
 - Projektdaten bleiben pro Browser getrennt. JSON-Sicherung und -Import übertragen bestehende Projekte, auch aus der ursprünglichen Werkstatt.
 - Diese Lösung richtet sich an macOS-, Windows- und Linux-Rechner. Smartphones und Tablets können die statische Webversion nutzen, aber nicht diese Desktop-Ollama-Anbindung.
 
-[Installationsanleitung](OLLAMA-ANLEITUNG.md)
+[Installationsanleitung mit Windows-Schritten](OLLAMA-ANLEITUNG.md)
 
 ## Starten
+
+Windows (PowerShell oder Eingabeaufforderung):
+
+```powershell
+npm.cmd start
+```
+
+macOS/Linux:
 
 ```sh
 npm start

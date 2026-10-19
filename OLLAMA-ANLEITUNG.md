@@ -28,6 +28,8 @@ Hier wurde die Anbindung technisch mit simulierten Ollama-Antworten geprüft. Es
 
 ## 2. Ollama installieren
 
+**Windows:** Windows 10 ab Version 22H2 oder Windows 11 verwenden. Den offiziellen Windows-Installer `OllamaSetup.exe` herunterladen. Die Befehle unten funktionieren in PowerShell oder der Eingabeaufforderung. Nach der Installation das Terminal neu öffnen, damit die Befehle gefunden werden.
+
 1. Gehe zu [ollama.com/download](https://ollama.com/download).
 2. Lade die offizielle Version für macOS, Windows oder Linux herunter und folge den Installationsschritten. Auf macOS/Windows die App anschließend starten.
 3. Öffne das Terminal (macOS/Linux) oder PowerShell (Windows) und prüfe:
@@ -91,12 +93,23 @@ ollama pull qwen3:14b
 
 1. Installiere [Node.js](https://nodejs.org/) 22 LTS oder neuer, falls noch nicht vorhanden.
 2. Lade unter [GitHub → Code → Download ZIP](https://github.com/PatrickFischerKSA/gliederungswerkstatt-ollama) das Projekt herunter und entpacke es.
-3. Öffne ein Terminal **im entpackten Projektordner**, in dem `package.json` liegt. Auf dem Mac kannst du `cd ` eingeben, den Ordner ins Terminal ziehen und Enter drücken.
-4. Starte:
+3. Öffne ein Terminal **im entpackten Projektordner**, in dem `package.json` liegt. Nicht im ZIP-Archiv arbeiten.
+   - **Windows:** ZIP im Explorer über „Alle extrahieren“ entpacken. Den entpackten Ordner öffnen und prüfen, ob `package.json` sichtbar ist; gegebenenfalls den enthaltenen Unterordner öffnen. In die Adressleiste des Explorers `powershell` eingeben und Enter drücken. Alternativ „Im Terminal öffnen“ verwenden.
+   - **macOS:** Im Terminal `cd ` eingeben, den entpackten Ordner hineinziehen und Enter drücken.
+   - **Linux:** Im Dateimanager im Projektordner „Im Terminal öffnen“ wählen.
+4. Starte unter **Windows**:
+
+```powershell
+npm.cmd run local-ai
+```
+
+Unter **macOS/Linux**:
 
 ```sh
 npm run local-ai
 ```
+
+`npm.cmd` verwendet unter Windows direkt die mit Node.js installierte Befehlsdatei und vermeidet mögliche PowerShell-Sperren für `npm.ps1`. Dafür musst du keine Ausführungsrichtlinie ändern. Falls `npm.cmd` unbekannt ist, Node.js installieren und danach ein neues Terminal öffnen. Prüfen mit `node --version` und `npm.cmd --version`.
 
 Es ist kein `npm install` nötig; der lokale Dienst verwendet nur Node.js-Bordmittel.
 
@@ -104,7 +117,7 @@ Es ist kein `npm install` nötig; der lokale Dienst verwendet nur Node.js-Bordmi
 
 [http://127.0.0.1:4189/#argumentation](http://127.0.0.1:4189/#argumentation)
 
-Das Terminal muss geöffnet bleiben. Beenden mit Ctrl+C. Ollama läuft separat. Beim nächsten Einsatz Ollama und `npm run local-ai` erneut starten.
+Das Terminal muss geöffnet bleiben. Beenden mit Ctrl+C. Ollama läuft separat. Beim nächsten Einsatz Ollama und die Werkstatt erneut starten: Windows mit `npm.cmd run local-ai`, macOS/Linux mit `npm run local-ai`. Das Modell nicht erneut herunterladen.
 
 Die normale GitHub-Pages-Webversion funktioniert weiterhin mit der Regelprüfung. Für die KI-Funktion ist die lokale Adresse erforderlich. Dadurch entfallen Browserprobleme durch HTTPS-zu-Localhost-Verbindungen und zusätzliche CORS-Freigaben.
 
@@ -121,6 +134,10 @@ Die normale GitHub-Pages-Webversion funktioniert weiterhin mit der Regelprüfung
 Grenzen pro Anfrage: 20 Wörter bis 10 000 Zeichen im Entwurf, 1 000 Zeichen in der Leitfrage, 3 000 Zeichen für alle Hauptkapitelüberschriften. Längere Arbeiten kapitelweise prüfen. Es wird nicht stillschweigend gekürzt. Die Kontextgröße wird auf 8 192 Tokens gesetzt; der Dienst begrenzt die Ausgabe auf 2 200 Tokens und wartet höchstens drei Minuten. Eine am Ausgabelimit beendete Antwort wird gekennzeichnet.
 
 ## 7. Häufige Probleme
+
+- **Windows: „npm.ps1 kann nicht geladen werden“ / Skriptausführung deaktiviert:** `npm.cmd run local-ai` statt `npm run local-ai` verwenden. Die PowerShell-Ausführungsrichtlinie muss nicht geändert werden.
+- **Windows: `npm.cmd` oder `node` nicht gefunden:** Node.js installieren und PowerShell vollständig schließen und neu öffnen. Mit `node --version` und `npm.cmd --version` prüfen.
+- **Windows: `package.json` nicht gefunden / ENOENT:** Du bist im falschen Ordner. Die heruntergeladene ZIP vollständig entpacken und ein Terminal in dem Ordner öffnen, in dem `package.json` liegt.
 
 - **„Ollama nicht erreichbar“:** Ollama starten, Terminal mit `ollama serve` auf Fehlermeldungen prüfen. `ollama list` muss funktionieren.
 - **Kein Modell gefunden:** `ollama pull qwen3:8b` ausführen, danach „Verbindung prüfen“ erneut anklicken.
@@ -141,6 +158,7 @@ Ollama sieht lokale Modellanfragen laut Anbieter nicht. Netzwerkverkehr beim Ins
 
 ## Quellen
 
+- [Ollama für Windows: Installation und Voraussetzungen](https://docs.ollama.com/windows)
 - [Ollama Quickstart](https://docs.ollama.com/quickstart)
 - [Ollama FAQ: lokale Datenverarbeitung, Cloud-Deaktivierung, Konfiguration](https://docs.ollama.com/faq)
 - [Qwen3 8B: Modelldownload, Größe und Modellbeschreibung](https://ollama.com/library/qwen3:8b)
