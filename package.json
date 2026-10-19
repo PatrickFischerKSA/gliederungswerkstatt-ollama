@@ -1,0 +1,15 @@
+{
+  "name": "gliederungswerkstatt-ollama",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node local-server.mjs",
+    "check": "node --check app.js && node --check engine.js && node --check argumentation.js && node --check argumentation-ui.js && node --check ollama-core.js && node --check ollama-ui.js && node --check local-server.mjs",
+    "test": "node --test *.test.js",
+    "local-ai": "node local-server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
