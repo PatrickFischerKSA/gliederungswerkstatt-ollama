@@ -1,5 +1,8 @@
 # Ollama-Edition – einmal pro Rechner einrichten
 
+**Alternative ohne lokale Installation:** Die Werkstatt bietet jetzt den Kopierweg für dein eigenes ChatGPT- oder Claude-Konto. In der Webversion unter „04 → Eigenes Chat-Konto“ den Auftrag erstellen, kopieren, selbst im Chat absenden und die Antwort zurückkopieren. Hierfür werden weder Ollama noch Node.js benötigt. Die folgenden Installationsschritte gelten nur für die optionale Ollama-KI.
+
+
 Die Gliederungswerkstatt kann deinen argumentativen Entwurf mit einem lokal installierten Sprachmodell prüfen. Der Rechner führt das Modell aus; GitHub Pages führt keine KI aus. Es fallen keine API-Gebühren an. Download, Speicherplatz, Rechenzeit und Strom benötigst du selbst.
 
 ## Einmal pro Rechner, nicht pro Browser

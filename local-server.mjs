@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {resolve,extname} from 'node:path';
 import {buildRequest,checkLocalModel,listLocalModels,OLLAMA_URL,validateInput} from './ollama-core.js';
 const root=fileURLToPath(new URL('.',import.meta.url));
-const allowed=new Set(['index.html','style.css','app.js','engine.js','argumentation.js','argumentation-ui.js','ollama-ui.js','OLLAMA-ANLEITUNG.md']);
+const allowed=new Set(['index.html','style.css','app.js','engine.js','argumentation.js','argumentation-ui.js','ollama-ui.js','chat-review.js','chat-review-ui.js','OLLAMA-ANLEITUNG.md']);
 function reply(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(data));}
 async function readJson(req){let body='';for await(const chunk of req){body+=chunk;if(Buffer.byteLength(body)>100000)throw Error('Anfrage zu groß.');}return JSON.parse(body);}
 export function createLocalServer({fetchImpl=fetch}={}){let busy=false;return createServer(async(req,res)=>{const port=req.socket.localPort;const hosts=[`127.0.0.1:${port}`,`localhost:${port}`];if(!hosts.includes(req.headers.host)){reply(res,403,{error:'Unzulässiger Host.'});return}const origin=req.headers.origin;if((origin&&!hosts.some(h=>origin===`http://${h}`))||req.headers['sec-fetch-site']==='cross-site'){reply(res,403,{error:'Bitte die Werkstatt direkt auf diesem Rechner öffnen.'});return}

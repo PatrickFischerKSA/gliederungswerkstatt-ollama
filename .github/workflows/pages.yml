@@ -26,7 +26,7 @@ jobs:
       - name: Prepare public files
         run: |
           mkdir _site
-          cp index.html style.css app.js engine.js argumentation.js argumentation-ui.js ollama-ui.js OLLAMA-ANLEITUNG.md _site/
+          cp index.html style.css app.js engine.js argumentation.js argumentation-ui.js ollama-ui.js chat-review.js chat-review-ui.js OLLAMA-ANLEITUNG.md _site/
           cp -R vendor _site/
       - uses: actions/upload-pages-artifact@v3
         with:

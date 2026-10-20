@@ -1,12 +1,12 @@
 {
   "name": "gliederungswerkstatt-ollama",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node local-server.mjs",
-    "check": "node --check app.js && node --check engine.js && node --check argumentation.js && node --check argumentation-ui.js && node --check ollama-core.js && node --check ollama-ui.js && node --check local-server.mjs",
-    "test": "node --test argumentation.test.js engine.test.js ollama.test.js",
+    "check": "node --check app.js && node --check engine.js && node --check argumentation.js && node --check argumentation-ui.js && node --check ollama-core.js && node --check ollama-ui.js && node --check local-server.mjs && node --check chat-review.js && node --check chat-review-ui.js",
+    "test": "node --test argumentation.test.js engine.test.js ollama.test.js chat-review.test.js",
     "local-ai": "node local-server.mjs"
   },
   "engines": {
